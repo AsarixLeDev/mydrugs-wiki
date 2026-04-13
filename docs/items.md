@@ -66,3 +66,7 @@ One of the most unusual systems in the codebase is the automatic generation of `
 ## See also
 
 For a complete ID-to-name list, see **[Item Reference](appendices/item-reference.md)**.
+
+## Recipe visuals
+
+Every craftable item and block from the uploaded snapshot is now exposed in **[Recipes & Production](recipes-and-production.md)** with a 9×9 visual recipe grid.
