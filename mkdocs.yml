@@ -1,0 +1,35 @@
+site_name: MyDrugs Mod Wiki
+site_description: Documentation for the MyDrugs Minecraft mod snapshot
+site_url: https://example.github.io/mydrugs-wiki/
+repo_name: yourname/mydrugs-wiki
+repo_url: https://github.com/yourname/mydrugs-wiki
+theme:
+  name: material
+  features:
+    - navigation.sections
+    - navigation.expand
+    - search.highlight
+    - search.share
+    - content.code.copy
+nav:
+  - Home: index.md
+  - Getting Started: getting-started.md
+  - Drugs: drugs.md
+  - Addiction & Recovery: addiction-and-recovery.md
+  - Items: items.md
+  - Machines: machines.md
+  - Fluids & Gases: fluids-and-gases.md
+  - Recipes & Production: recipes-and-production.md
+  - Worldgen & Content: worldgen-and-content.md
+  - Client Effects: client-effects.md
+  - Technical Architecture: technical-architecture.md
+  - Appendices:
+      - Item Reference: appendices/item-reference.md
+      - Block Reference: appendices/block-reference.md
+      - Fluid & Gas Reference: appendices/fluid-and-gas-reference.md
+      - Recipe Reference: appendices/recipe-reference.md
+markdown_extensions:
+  - admonition
+  - tables
+  - toc:
+      permalink: true
