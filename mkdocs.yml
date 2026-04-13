@@ -36,3 +36,6 @@ markdown_extensions:
 
 extra_css:
   - assets/stylesheets/wiki-recipes.css
+
+extra_javascript:
+  - assets/javascripts/wiki-recipes.js
