@@ -1,8 +1,34 @@
-# Worldgen and content
+# Worldgen & Content
 
-## Crops and plants
+The snapshot does not stop at machines and items. It also includes world-facing content.
 
-The content snapshot includes dedicated crop blocks for:
+## Biome content
+
+A custom biome key is defined for:
+
+- `psychedelic_mushroom_valley`
+
+The worldgen resources also include biome modifiers and feature placement data for magic mushroom content.
+
+## Features
+
+The uploaded resources show dedicated worldgen support for:
+
+- huge magic mushrooms
+- patch magic mushrooms
+- sulfur ore
+- salt disk generation
+
+## Surface content
+
+The block and biome systems also reference custom terrain-facing blocks such as:
+
+- psychedelic mycelium
+- psychedelic grass
+
+## Crops and farmable content
+
+The block registry includes crop blocks for:
 
 - rye
 - malt
@@ -10,37 +36,14 @@ The content snapshot includes dedicated crop blocks for:
 - cannabis
 - coca
 
-It also includes psychedelic mushroom blocks and biome content.
+That makes farming a real first step in progression rather than a decorative side system.
 
-## Psychedelic Mushroom Valley
+## Recovery-side world content
 
-The uploaded worldgen JSON defines a custom biome named **Psychedelic Mushroom Valley**.
+The snapshot also embeds recovery into the world through blocks and professions such as:
 
-Its data shows:
+- therapist desk
+- therapist villager profession
+- recovery anchor
 
-- mooshroom-style creature spawning
-- mushroom-island-style atmosphere
-- custom placed features for magic mushrooms
-- huge mushroom generation using custom mushroom block and stem states
-
-## Magic mushroom features
-
-The resource pack includes:
-
-- a configured / placed feature for huge magic mushrooms
-- a configured / placed feature for patch magic mushrooms
-- a biome modifier that adds those features into the custom biome
-
-## Surface and geology notes
-
-The Java side also defines worldgen keys for salt and sulfur-related generation. The uploaded resource snapshot is strongest on the mushroom biome side; if you later add the rest of the generated JSONs, this page can be expanded with the full ore / disk placement data too.
-
-## Loot integration
-
-The data pack also contains:
-
-- crop loot tables
-- seed injection loot tables
-- grass / fern loot modifiers
-
-That means the agriculture loop is connected to ordinary world exploration rather than being locked behind a single crafted starting seed.
+That gives the mod a broader identity than pure chemistry or pure combat modifiers.

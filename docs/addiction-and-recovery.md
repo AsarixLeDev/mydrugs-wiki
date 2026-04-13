@@ -1,108 +1,85 @@
-# Addiction and recovery
+# Addiction & Recovery
 
-This is one of the deepest systems in the mod.
+This is one of the deepest systems in the entire snapshot.
 
 ## What is tracked per player
 
 Player addiction data is stored as an attachment and serialized through `PlayerAddictionStats`.
 
-For each drug category, the system tracks values such as:
+For each drug category, the system tracks:
 
 - addiction value
 - withdrawal meter
 - tolerance
 - last use time
-- relapse state
-- peak historical addiction
+- relapse memory
+- historical peak addiction
 
-At the player level it also tracks:
-
-- genetic factor
-- resilience
-- stress level
-- temporary recovery effects
-- therapy / hint / sleep-related timers
+At the player level it also tracks wider state such as resilience, stress, temporary recovery bonuses, and therapy-related timers.
 
 ## What happens when a player consumes a drug
 
-On use, the system:
+Drug consumption does more than apply an effect. It also:
 
-1. computes addiction gain from dose, configuration, genetics, and tolerance
-2. applies relapse multipliers
-3. updates last-use timing
-4. raises tolerance
-5. lowers withdrawal temporarily as short-term relief
-6. stores the peak addiction history for that category
+1. computes addiction gain
+2. raises tolerance
+3. updates last-use time
+4. lowers withdrawal temporarily as short-term relief
+5. records peak addiction state for that category
 
-So consumption does not just fire an effect; it mutates a long-term recovery model.
+That means every dose affects both the immediate experience and the long-term recovery model.
 
-## Tick-based withdrawal simulation
+## Tick-based simulation
 
-`AddictionManager.tickPlayer()` runs the main recovery loop.
-
-Its inputs include:
-
-- time since use
-- whether the player is in combat
-- nearby companions
-- whether the player is in a safe zone
-- resilience and stress
-
-Its outputs include:
+`AddictionManager.tickPlayer()` is the main update loop. It coordinates:
 
 - withdrawal progression
 - addiction decay
 - tolerance decay
 - relapse decay
 - global severity calculation
-- stress updates
+- stress changes
 - symptom application
-- client synchronization
+- resilience recovery in safe conditions
+- regular client sync
 
-## Recovery systems in gameplay
+The system also reacts to context such as time since last use, combat, nearby companions, safe zones, sleep, and food.
 
-### Safe spaces
+## Recovery content
 
-A **recovery anchor** creates a safe-zone check in an 8-block radius. Safe zones can reduce the pressure of severe withdrawal and contribute to resilience recovery.
+The uploaded snapshot already includes a meaningful recovery layer.
 
-### Therapy layer
-
-The content snapshot includes:
-
-- `therapist_desk`
-- a therapist point-of-interest type
-- a therapist villager profession
-
-That gives the recovery theme a world-embedded role, not just an item-based one.
+### Blocks and world support
+- Recovery Anchor
+- Therapist Desk
+- therapist villager profession
+- therapist point of interest
 
 ### Recovery items
+- Personal Diary
+- Headphones
+- herbal tea
+- calming mixture
+- sleeping aid
 
-- **Personal diary**: grants calm / thought-suppression style temporary effects and plays a writing sound.
-- **Headphones**: toggleable comfort item with track cycling and continuous state syncing.
-- **Herbal tea**: reduces stress and lowers withdrawal meters across categories.
-- **Calming mixture**: stronger stress relief plus diary/sleep bonuses.
-- **Sleeping aid**: clears sleep blocks and adds a sleep-oriented bonus window.
-
-### Ordinary needs also matter
-
-The manager code also references sleep, food, health, social relief, hints, and safe-zone behavior. That makes recovery feel systemic rather than isolated to one block or item.
+These are not just lore props. They interact directly with stress, withdrawal, calm windows, or sleep support.
 
 ## Feedback to the player
 
-Withdrawal is communicated through both gameplay and presentation:
+Withdrawal and severity are communicated through both mechanics and presentation:
 
-- server-side symptoms and stress damage
-- global severity syncing
-- intrusive whispers and hallucination cues
+- status effects and stress damage
+- hallucination cues
+- intrusive whispers
 - heartbeat effects
-- tunnel / dissociation-style shaders
-- HUD-driven feedback and tension
+- tunnel and distortion shaders
+- HUD feedback
 
 ## Damage types
 
-The resources define custom damage types for:
+The resources define at least two custom damage types tied to the broader system:
 
 - `blood_draw`
 - `stress_overload`
 
-The second one is especially important because it shows that severe internal state can become direct mechanical danger.
+The second one is especially important because it shows the internal recovery model can become direct gameplay danger.

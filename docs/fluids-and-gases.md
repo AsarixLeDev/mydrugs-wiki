@@ -1,56 +1,73 @@
-# Fluids and gases
+# Fluids & Gases
 
-The chemistry side of the mod is built on **two separate transport systems**: a standard fluid system and a custom gas system.
+The chemistry side of the snapshot is split across **two different transport systems**:
+
+- a standard fluid system
+- a custom gas system
+
+That split matters, because gases are not faked as ordinary fluids.
 
 ## Fluids
 
-Every registered fluid entry carries:
+Each registered fluid entry carries:
 
 - an ID
 - a tint color
 - a drinkable flag
 - an optional linked `DrugId`
 
-That is why a bottle can both show the right color and apply a drug effect when drunk.
+That is why a bottle can display the correct liquid color and still apply a drug effect when drunk.
 
-### Registered fluids in the current snapshot
+### Registered fluid families
 
-| Fluid | Drinkable | Drug link |
-| --- | --- | --- |
-| Starch Mash | No | — |
-| Sweet Mash | No | — |
-| Wild Yeast | No | — |
-| Fermented Mash | No | — |
-| Raw Alcohol | Yes | ALCOHOL |
-| Vodka | Yes | ALCOHOL |
-| Ammoniac | No | — |
-| Blood | No | — |
-| Murky Extract | No | — |
-| Filtered Extract | No | — |
-| Coal Tar | No | — |
-| Amino Acid | No | — |
-| Tryptophan Solution | No | — |
-| Waste Biomass | No | — |
-| Lysergic Acid | No | — |
-| Diethylamine | No | — |
-| Ergotamine | No | — |
-| Lsd | Yes | LSD |
-| Hydrochloric Acid | No | — |
-| Acylating Agent | No | — |
-| Activated Lysergic Acid | No | — |
-| Sulfur Compound | No | — |
-| Crack | No | — |
+#### Alcohol line
+- starch mash
+- sweet mash
+- wild yeast
+- fermented mash
+- raw alcohol
+- vodka
+
+#### Coca extraction line
+- murky extract
+- filtered extract
+- crack
+
+#### Lysergic line
+- amino acid
+- tryptophan solution
+- waste biomass
+- ergotamine
+- hydrochloric acid
+- sulfur compound
+- acylating agent
+- lysergic acid
+- activated lysergic acid
+- LSD
+
+#### Utility and world fluids
+- ammoniac
+- blood
+- coal tar
+
+### Drinkable fluids
+
+The uploaded code and resources clearly mark some fluids as drinkable:
+
+- raw alcohol
+- vodka
+- LSD
 
 ## Gases
 
-The gas system is not just “fluids pretending to be gases.” It has its own:
+The gas system has its own:
 
 - `GasType`
 - `GasStack`
 - `GasTank`
-- `IGasHandler`
-- block and item capabilities
-- transfer utility
+- gas capability system
+- gas containers
+- gas transfer utilities
 
 ### Registered gases
 
@@ -64,19 +81,14 @@ The gas system is not just “fluids pretending to be gases.” It has its own:
 
 ## Gas hardware
 
-The current snapshot includes:
+The current snapshot includes dedicated gas infrastructure:
 
-- a placeable gas tank block entity
-- a gas tank item with persistent internal storage
-- a gas pump block entity
-- gasifier output into gas handlers
-- gas use in the chemical reactor and advanced mixing vat
+- **[Gas Tank](machines.md#gas-tank)**
+- **[Gas Pump](machines.md#gas-pump)**
+- portable gas tank item support
+- gas output from the **[Gasifier](machines.md#gasifier)**
+- gas consumption in the **[Chemical Reactor](machines.md#chemical-reactor)** and **[Advanced Mixing Vat](machines.md#advanced-mixing-vat)**
 
-## Important content note
+## Snapshot note
 
-There is at least one naming mismatch between code and resources:
-
-- Java registers `sulfur_oxide`
-- the language file still contains `reactive`
-
-That is worth fixing before public release so the wiki, UI text, and gameplay all use the same gas name.
+There is a visible naming drift between some resources and code. The most obvious example is the `sulfur_oxide` gas, where some assets still carry older `reactive` wording. The implementation is still understandable, but the names should be unified before a polished public release.

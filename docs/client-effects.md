@@ -1,61 +1,50 @@
-# Client effects and presentation
+# Client Effects
 
-The client layer is a major part of the mod’s identity.
+The client layer is one of the mod’s most memorable parts.
 
-## Shader set
+## Shader suite
 
-The uploaded shader resources include:
+The uploaded shader resources include a large set of custom fullscreen effects, such as:
 
-- `acid_warp`
-- `aurora_ribbons`
-- `chromatic_dream`
-- `drunk_vision`
-- `event_horizon`
-- `fog`
-- `lucid_dream`
-- `melt_reality`
-- `opal_wave`
-- `quantum_flower`
-- `spectral_poster`
-- `void_pulse`
-- `withdrawal_tunnel`
+- acid warp
+- aurora ribbons
+- chromatic dream
+- drunk vision
+- event horizon
+- fog
+- lucid dream
+- melt reality
+- opal wave
+- quantum flower
+- spectral poster
+- void pulse
+- withdrawal tunnel
 
-These pair with the `EffectType` shader category and the mod’s shader manager.
+These are not decorative leftovers. They are wired into the drug effect and withdrawal systems.
 
 ## Sound design
 
-Registered sound events include:
-
-- `heartbeat`
-- `smoke`
-- `single_heartbeat`
-- `hallucination_cue`
-- `intrusive_whisper`
-- `goodvibes_music`
-- `write`
-
-The raw sound folder contains **30 audio files**, including heartbeat loops, whisper variations, hallucination cues, streamed music, smoke audio, and the diary writing sound.
+The sound resources include heartbeat loops, whispers, hallucination cues, smoke sounds, a writing sound, and longer music tracks. In practice, the mod uses audio as part of symptom delivery rather than as mere ambience.
 
 ## HUD and symptom feedback
 
-The code snapshot shows the addiction system feeding client-side presentation such as:
+Client-side feedback is driven by addiction state and can include:
 
-- severity synchronization
-- tunnel / visual distortion effects
-- heartbeat tension
-- intrusive whispers
+- heartbeat pulses
+- whispers
 - hallucination cues
-- headphones state synchronization
+- withdrawal-style tunnel vision
+- HUD severity display
+- item and overlay changes
 
-## Dynamic item presentation
+## Stateful rendering
 
-The resources also show several item-state visual systems:
+Several systems have dedicated visual logic:
 
-- bottle shell + multiple liquid fill models
-- syringe empty / filled variants
-- bucket / bottle masking assets
-- generated space-food overlays
+- bottle fill and tint states
+- syringe fill states
+- custom block entity renderers
+- generated overlays for space foods
+- custom machine visuals and animations
 
-## Custom block visuals
-
-The assets include custom blockstates and machine models, plus an `.obj` model for the grinding bowl. The renderer package also confirms that several processing blocks have visible animated or stateful rendering beyond standard static blocks.
+The result is a mod where the player’s state is not only numeric. It is made visible and audible.

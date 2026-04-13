@@ -1,91 +1,133 @@
-# Recipes and production chains
+# Recipes & Production
 
-This page explains the main gameplay chains revealed by the uploaded recipe JSONs.
+This page focuses on the **main production chains** visible in the uploaded recipe set.
 
 ## Alcohol chain
 
-1. **Potato** in the advanced furnace produces **baked potato** + **starch mash**.
-2. **Malt** is ground into **malt powder**.
-3. **Malt powder + starch mash** in the mixing vat becomes **sweet mash**.
-4. **Flour + water** in the mixing vat becomes **wild yeast**.
-5. **Sweet mash + wild yeast** in the mixing vat becomes **fermented mash**.
-6. **Fermented mash** in the distiller becomes **raw alcohol** + water.
+1. **Advanced Furnace**  
+   potato → baked potato + starch mash
 
-`vodka` exists as a registered drinkable fluid, but the uploaded recipe snapshot does not include a dedicated conversion recipe for it.
+2. **Mortar**  
+   malt → malt powder  
+   wheat → flour
 
-## Tobacco chain
+3. **Mixing Vat**  
+   malt powder + starch mash → sweet mash  
+   flour + water → wild yeast  
+   sweet mash + wild yeast → fermented mash
 
-1. Grow **tobacco**.
-2. Dry **tobacco leaf** into **dried tobacco leaf**.
-3. Grind it into **tobacco handful**.
-4. Use the **roller** with paper + filter + three ingredients to create cigarettes or mixed joints.
+4. **Distiller**  
+   fermented mash → raw alcohol + water
 
-## Cannabis / hash chain
+This chain feeds both drinkables and later chemistry.
 
-1. Grow **cannabis**.
-2. Dry or cure the leaf.
-3. Sieve **cured cannabis leaf** into **dried cannabis leaf** with a chance at **cannabis resin**.
-4. Grind dried leaf into **cannabis powder**.
-5. Compress **10 cannabis resin** in the stomp crafter into a **hash brick**.
-6. Split the brick into **16 hash pieces**.
+## Coca chain
 
-## Cocaine / crack chain
+1. **Dryer**  
+   coca leaf → dried coca leaf
 
-1. Dry **coca leaf** into **dried coca leaf**.
-2. Grind it into **coca paste**.
-3. Mix **coca paste + raw alcohol** in the mixing vat to produce **murky extract**.
-4. Filter murky extract in the **fluid filterer** into **filtered extract** + plant waste.
-5. Evaporate filtered extract into a **cocaine plate**.
-6. Grind the plate into **cocaine dust**.
-7. In the advanced mixing vat, combine **cocaine dust + water + ammoniac** to produce **crack fluid**.
-8. Evaporate that fluid into a **crack plate**.
-9. Grind the plate into **crack shards**.
+2. **Mortar**  
+   dried coca leaf → coca paste
 
-## LSD chain
+3. **Mixing Vat**  
+   coca paste + raw alcohol → murky extract
 
-This is the longest chain in the current snapshot.
+4. **Fluid Filterer**  
+   murky extract → filtered extract + plant waste
 
-### Biomass / fungal foundation
+5. **Evaporation Tray**  
+   filtered extract → cocaine plate
 
-1. Grind **wheat seeds** into **plant biomass**.
-2. Growth chamber: **ergot + plant biomass + water** → fungal culture path.
-3. Growth chamber: **fungal culture + rye seeds + water** → ergot path.
+6. **Mortar**  
+   cocaine plate → cocaine dust
 
-### Amino / tryptophan line
+7. **Advanced Mixing Vat**  
+   cocaine dust + water + ammoniac → crack
 
-4. Mixing vat: **plant biomass + malt + water** → **amino acid** fluid.
-5. Centrifuge: **amino acid** → **tryptophan** + **waste biomass**.
-6. Evaporation tray: **tryptophan fluid** → **tryptophan powder**.
+8. **Evaporation Tray**  
+   crack fluid → crack plate
 
-### Acid / gas chemistry line
+9. **Mortar**  
+   crack plate → crack shard
 
-7. Gasifier: **salt powder** → **chlorine gas**.
-8. Chemical reactor: **air + chlorine** → **hydrochloric gas**.
-9. Advanced mixing vat: **water + hydrochloric gas** → **hydrochloric acid**.
-10. Gasifier: **sulfur powder** → **sulfur gas**.
-11. Chemical reactor: **air + sulfur gas** → code-side `sulfur_oxide` gas.
-12. Advanced mixing vat: **water + sulfur_oxide gas** → **sulfur compound**.
-13. Mixing vat: **sulfur compound + hydrochloric acid** → **acylating agent**.
+## Cannabis and hash chain
 
-### Final biochemical synthesis
+1. **Dryer**  
+   cannabis leaf → cured cannabis leaf
 
-14. Biochemical reactor: **ergot + tryptophan** with heat → **ergotamine**.
-15. Advanced mixing vat: **ergotamine + hydrochloric acid + water** → **lysergic acid**.
-16. Mixing vat: **lysergic acid + acylating agent** → **activated lysergic acid**.
-17. Mixing vat: **raw alcohol + ammoniac** → **diethylamine**.
-18. Mixing vat: **activated lysergic acid + diethylamine** → **LSD fluid**.
+2. **Sieve**  
+   cured cannabis leaf → dried cannabis leaf + possible cannabis resin
 
-## Utility and crafting recipes
+3. **Mortar**  
+   dried cannabis leaf → cannabis powder
 
-The regular crafting recipe set also includes foundational items and stations such as:
+4. **Stomp Crafter**  
+   10 cannabis resin → hash brick
 
-- advanced furnace
-- dryer
-- sieve
-- roller
-- glass bottle
-- headphones
-- personal diary
-- filters and grinding tools
+The rolling system then turns smoking ingredients into joints or cigarettes through the handheld Rolling Gadget.
 
-Use the appendix for a file-by-file recipe reference.
+## Lysergic chain
+
+1. **Mixing Vat**  
+   plant biomass + malt + water → amino acid
+
+2. **Centrifuge**  
+   amino acid → tryptophan solution + waste biomass
+
+3. **Evaporation Tray**  
+   tryptophan solution → tryptophan powder
+
+4. **Growth Chamber**  
+   fungal culture + rye seeds + water → infected rye → ergot  
+   ergot + plant biomass + water → fungal fiber → fungal culture
+
+5. **Biochemical Reactor**  
+   ergot + tryptophan powder → ergotamine
+
+6. **Gasifier**  
+   salt powder → chlorine gas  
+   sulfur powder → sulfur gas
+
+7. **Chemical Reactor**  
+   air + chlorine → hydrochloric gas  
+   air + sulfur gas → sulfur oxide
+
+8. **Advanced Mixing Vat**  
+   water + sulfur oxide → sulfur compound  
+   water + hydrochloric gas → hydrochloric acid  
+   ergotamine + hydrochloric acid + water → lysergic acid
+
+9. **Mixing Vat**  
+   sulfur compound + hydrochloric acid → acylating agent  
+   lysergic acid + acylating agent → activated lysergic acid  
+   activated lysergic acid + diethylamine → LSD
+
+## Machine recipe counts in the uploaded resources
+
+| Machine / type | Count |
+| --- | --- |
+| grinding | 10 |
+| mixing vat | 9 |
+| advanced mixing vat | 4 |
+| drying | 4 |
+| evaporation tray | 4 |
+| sieving | 2 |
+| growth chamber | 2 |
+| gasifier | 2 |
+| chemical reactor | 2 |
+| advanced furnace | 2 |
+| distiller | 1 |
+| fluid filtering | 1 |
+| centrifuge | 1 |
+| biochemical reactor | 1 |
+| stomp crafting | 1 |
+
+## Snapshot design takeaway
+
+The uploaded snapshot is not a set of disconnected gimmicks. It is a real **production graph**:
+
+- biology and farming feed processing
+- processing feeds fluids
+- fluids feed chemistry
+- gas infrastructure unlocks late chemistry
+- the end products loop back into the drug and addiction systems

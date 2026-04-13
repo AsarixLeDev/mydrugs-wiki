@@ -1,91 +1,68 @@
 # Items
 
-The item layer is richer than a normal content mod because many items store **custom state** with data components.
+The item layer is one of the most distinctive parts of the snapshot. It is not just a flat list of consumables; many items carry custom state through modern data components.
 
-## Key data components
+## Processing tools
 
-The mod registers components for:
+### Pestle
+Used with the **[Mortar](machines.md#mortar)** to advance grinding recipes manually.
 
-- `BOTTLE_CONTENT`
-- `ROLLED_CONTENT`
-- `BLOOD_SAMPLE`
-- `BLOOD_AMOUNT`
-- `GAS_TANK_CONTENTS`
-- `FILLED`
+### Rolling Gadget
+A handheld rolling station with slots for paper, a filter, and up to three ingredients. It creates:
 
-That is what powers the mod’s dynamic containers and item-specific behavior.
-
-## Bottles
-
-The custom glass bottle is a real mini fluid container with **250 mB capacity**.
-
-It can:
-
-- hold tagged fluids
-- show stored fluid and amount in the tooltip
-- drink fluids whose fluid type is marked drinkable
-- take a small ammoniac fill from a ready composter while sneaking
-
-This is one of the mod’s most important bridge items because it turns the fluid system into direct player-use gameplay.
-
-## Syringe
-
-The syringe stores a blood sample and an amount value.
-
-It can:
-
-- draw blood from living targets
-- store source identity and source name
-- tint itself red when filled
-- clear itself when shift-used while filled
-- apply the custom `blood_draw` damage type
-
-It excludes several entity types that logically should not provide a normal sample.
-
-## Rolling system
-
-The roller reads:
-
-- paper
-- a filter
-- three rolling ingredients
-
-From that it creates a `RolledDrugContent` payload.
-
-- if all three ingredients are tobacco, the result is a **cigarette**
-- otherwise the result is a **joint**
-
-This makes rolled products composition-aware instead of being fixed one-item recipes.
-
-## Handheld utility items
+- cigarettes when all three ingredients are tobacco
+- joints for other valid smoking mixtures
 
 ### Bang
+A handheld smoking tool with a one-slot internal container.
 
-The bang is a one-slot carrier item.
+### Portable Grinder
+A single-slot handheld processor stored directly on the item through container components.
 
-- shift-right-click opens its internal inventory
-- normal use charges and consumes the loaded item
-- loaded content must support smoking-style drug delivery
+## Stateful containers
 
-### Portable grinder
+### Glass Bottle
+A real fluid container with a 250 mB capacity. It can:
 
-The portable grinder is another one-slot container item.
+- store custom fluids
+- display liquid color
+- drink fluids that are marked drinkable
+- interact with some world sources such as ammoniac collection
+- fill and empty machine tanks
 
-- if empty or holding an invalid item, it opens its UI
-- if holding a grindable item, using it processes the recipe directly
+### Syringe
+Stores blood-source data, blood amount, and visual fill state. It can draw blood from living entities and uses a custom `blood_draw` damage type.
 
-Together these items give the mod a “portable station” design language.
+### Gas Tank
+The portable gas tank item preserves internal gas contents when moved, placed, or picked back up.
 
-## Gas tank
+## Drug items
 
-The gas tank item stores its own gas stack through `GAS_TANK_CONTENTS` and exposes a proper gas capability. Its current Java capacity is **8,000 units**.
+The snapshot exposes drugs through many different item forms:
+
+- mushrooms and mushroom powder
+- powders and shards
+- joints and cigarettes
+- LSD drops
+- bottle-based drinkables
+- space-food variants of vanilla food items
+
+## Recovery items
+
+The recovery side of the mod also has dedicated items:
+
+- **Personal Diary**
+- **Headphones**
+- herbal tea
+- calming mixture
+- sleeping aid
+
+These do not just provide flavor. They hook directly into stress, withdrawal, and recovery logic.
 
 ## Space foods
 
-A particularly unusual feature in this snapshot is the **space food** system.
+One of the most unusual systems in the codebase is the automatic generation of `space_...` variants for many vanilla foods. These are not just reskins. They are real items with custom overlay rendering and weed-linked consumption behavior.
 
-The mod auto-generates variants for most vanilla foods that already have food and consumable components. These copies preserve the base item behavior, then layer drug consumption on top. In the current snapshot, the generated space foods use the weed drug model through an eating strategy.
+## See also
 
-## Reference pages
-
-Use the appendices for complete item IDs and display names.
+For a complete ID-to-name list, see **[Item Reference](appendices/item-reference.md)**.

@@ -1,77 +1,96 @@
-# Getting started
+# Getting Started
 
-This mod is built as a chain-heavy progression system. You do not jump straight to the complex chemistry. The early game starts with crops, simple processing, and a few hand-operated tools; the late game opens fluid, gas, and reactor workflows.
+The current snapshot has a strong sense of progression. You do not begin with the industrial chemistry line. You begin with crops, simple processing stations, and manual handling.
 
-## Early-game loop
+## 1. Gather biological inputs
 
-### 1. Collect seeds and grow crops
-
-The content snapshot includes crop blocks for:
+The earliest plant line includes:
 
 - rye
 - malt
 - tobacco
 - cannabis
 - coca
+- magic mushrooms
 
-The loot modifiers in the resource pack also suggest extra seed injection from grass and ferns, so natural exploration is part of the opening loop.
+Some of these go directly into consumables, while others become processing ingredients later.
 
-### 2. Build the first hand tools
+## 2. Build the first stations
 
-The earliest crafting recipes point toward these starter tools and stations:
+The earliest craftable processing blocks in the uploaded resources are:
 
-- grinding bowl + grinding tool
-- dryer
-- sieve
-- roller
-- glass bottle
-- bang
+- **[Mortar](machines.md#mortar)**
+- **[Dryer](machines.md#dryer)**
+- **[Sieve](machines.md#sieve)**
+- **[Mixing Vat](machines.md#mixing-vat)**
+- **[Advanced Furnace](machines.md#advanced-furnace)**
 
-These unlock the first real processing steps: drying, grinding, sieving, smoking, and bottling.
+These open the first real production loop.
 
-### 3. Learn the basic plant chains
+## 3. Start the simple item chain
 
-- **Tobacco**: dry leaves, grind them into a tobacco handful, then roll cigarettes.
-- **Cannabis**: cure/sieve leaves, collect resin, grind dried leaves into powder, and compress resin into hash.
-- **Coca**: dry leaves, grind them into coca paste, then move into the fluid chain.
-- **Rye / malt**: support the alcohol and biochemical lines.
+The first practical conversions are:
 
-## Mid-game machines
+- wheat → flour in the **Mortar**
+- tobacco leaf → dried tobacco leaf in the **Dryer**
+- dried tobacco leaf → tobacco handful in the **Mortar**
+- cannabis leaf → cured cannabis leaf in the **Dryer**
+- cured cannabis leaf → dried cannabis leaf + possible resin in the **Sieve**
+- dried cannabis leaf → cannabis powder in the **Mortar**
 
-Once the basics are running, the mod expands into machines that handle liquids, repeated processing, and more demanding recipes:
+That is the easiest way to start understanding how the mod stacks machines together.
 
-- advanced furnace
-- mixing vat
-- distiller
-- fluid filterer
-- evaporation tray
-- centrifuge
-- growth chamber
-- biochemical reactor
+## 4. Move into mash and alcohol
 
-At this stage the mod shifts from “items only” to **items + fluids + player-state effects**.
+The current snapshot already supports a small alcohol line:
 
-## Late-game chemistry
+1. potato → baked potato + starch mash in the **Advanced Furnace**
+2. malt → malt powder in the **Mortar**
+3. malt powder + starch mash → sweet mash in the **Mixing Vat**
+4. flour + water → wild yeast in the **Mixing Vat**
+5. sweet mash + wild yeast → fermented mash in the **Mixing Vat**
+6. fermented mash → raw alcohol + water in the **Distiller**
 
-The heaviest production paths are the cocaine / crack chain and the LSD chain.
+Raw alcohol then becomes an important fluid input for several later recipes.
 
-Those lines rely on:
+## 5. Move into coca extraction
 
-- gas generation and storage
-- multi-input fluid recipes
-- heat-gated reactors
-- conversion between items, fluids, and gases
+The coca route is also fully visible in the snapshot:
 
-## Recovery gameplay matters
+1. coca leaf → dried coca leaf in the **Dryer**
+2. dried coca leaf → coca paste in the **Mortar**
+3. coca paste + raw alcohol → murky extract in the **Mixing Vat**
+4. murky extract → filtered extract + plant waste in the **Fluid Filterer**
+5. filtered extract → cocaine plate in the **Evaporation Tray**
+6. cocaine plate → cocaine dust in the **Mortar**
 
-This mod is not only about producing consumables. Addiction and withdrawal systems push the player toward recovery tools too:
+The advanced crack route branches off later from cocaine dust.
 
-- recovery anchor safe zones
-- therapist desk / therapist villager profession
-- personal diary
-- headphones
-- herbal tea
-- calming mixture
-- sleeping aid
+## 6. Recognize what is late-game and not yet craftable
 
-A stable playthrough is not just “make stronger content”; it is also “manage the consequences.”
+Several machines already have working code, assets, menus, and recipes, but no survival obtain path in the uploaded recipe set. These include:
+
+- Distiller
+- Fluid Filterer
+- Evaporation Tray
+- Centrifuge
+- Growth Chamber
+- Biochemical Reactor
+- Gasifier
+- Chemical Reactor
+- Advanced Mixing Vat
+
+The wiki still documents them, because they are functional parts of the snapshot. They are just not yet fully surfaced through crafting.
+
+## 7. Understand the player-side systems early
+
+Even in early progression, the mod is not only about production. Drug use feeds into:
+
+- category-based addiction
+- tolerance
+- withdrawal
+- stress
+- audiovisual symptom feedback
+- recovery tools such as the diary, headphones, and recovery anchor
+
+For that side of the mod, read **[Drugs](drugs.md)** and **[Addiction & Recovery](addiction-and-recovery.md)** next.

@@ -1,58 +1,63 @@
 # Drugs
 
-The mod uses an abstract drug system rather than hard-coding every item effect individually.
+The mod does not hard-code every consumable as a one-off item. Instead, it uses a shared drug framework and multiple delivery methods.
 
 ## Core model
 
-Each drug is defined by:
+Each drug in code is defined by:
 
 - a `DrugId`
 - a `DrugCategory`
 - one or more `DrugEffect`s
 - an addiction rate
 
-The effect system is flexible enough to mix:
+A drug can then be attached to many different items or fluids.
 
-- vanilla-style effects such as nausea and slowness
-- full-screen shader effects
-- sound effects such as heartbeat audio
+## Effect types
+
+The effect layer is flexible enough to mix several output styles:
+
+- vanilla mob effects such as nausea and slowness
+- client shader effects
+- sound-driven effects such as heartbeat or whispers
+
+That is why different consumables can still feel like they belong to the same internal system.
 
 ## Consumption strategies
 
-The same drug model can behave differently depending on how it is taken. The codebase defines strategies for:
+The same drug can behave differently depending on how it is taken. The current code defines strategies for:
 
 - eating
 - smoking
 - sniffing
 - injecting
 
-That means the item layer is mostly a delivery system on top of a shared drug registry.
+That means the item class is often just a delivery wrapper around a shared `DrugModel`.
 
-## Drugs actively surfaced by the current content snapshot
+## Drugs clearly surfaced in the current snapshot
 
-| Drug | Category | Current gameplay presence | Effect highlights | Addiction rate |
-| --- | --- | --- | --- | --- |
-| WEED | CANNABINOID | Cannabis powder, joints, space foods | SLOWNESS, FOG | 2 |
-| HASH | CANNABINOID | Hash pieces | FOG, SLOWNESS | 2.5 |
-| TOBACCO | NICOTINIC | Tobacco handful, cigarette, rolled mixes | VOID_PULSE | 0.8 |
-| METH | STIMULANT | Meth shard, meth powder | VOID_PULSE, NAUSEA, HEARTBEAT | 6 |
-| COCAINE | STIMULANT | Cocaine dust | VOID_PULSE, HEARTBEAT | 6 |
-| CRACK | STIMULANT | Crack shard | VOID_PULSE, NAUSEA, HEARTBEAT | 6 |
-| LSD | PSYCHEDELIC | LSD drop, LSD fluid | ACID_WARP | 0 |
-| MUSHROOMS | PSYCHEDELIC | Magic mushroom, magic mushroom powder | EVENT_HORIZON | 0 |
-| ALCOHOL | DEPRESSANT | Raw alcohol, vodka via drinkable fluids | NAUSEA, DRUNK_VISION | default |
+| Drug | Category | Current examples | Notes |
+| --- | --- | --- | --- |
+| WEED | Cannabinoid | cannabis powder, joints, space foods | also tied to fog-style presentation |
+| HASH | Cannabinoid | hash piece / hash brick line | related to cannabis resin processing |
+| TOBACCO | Nicotinic | tobacco handful, cigarettes, mixed rolls | primarily tied to smoking items |
+| METH | Stimulant | meth shard, meth powder | strong stimulant-side presentation |
+| COCAINE | Stimulant | cocaine dust | late in the coca extraction chain |
+| CRACK | Stimulant | crack shard | advanced branch from cocaine dust |
+| LSD | Psychedelic | LSD drop, LSD fluid, LSD bottle asset line | produced through the lysergic chemistry route |
+| MUSHROOMS | Psychedelic | magic mushroom, magic mushroom powder | also tied to worldgen content |
+| ALCOHOL | Depressant | raw alcohol, vodka | represented mainly through drinkable fluids |
 
-## Drugs defined in code but not clearly surfaced in this snapshot
+## Drugs present in code but not yet strongly surfaced in the uploaded recipe set
 
-The registry also defines several additional IDs that look like **future-facing or framework-ready content**, including:
+The registry also includes several IDs that look framework-ready or future-facing, such as:
 
 - MDMA
-- SALVIA
 - DMT
+- SALVIA
 - HEROIN
 - MORPHINE
 - FENTANYL
-- OPIUM
 - KETAMINE
 - PCP
 - DXM
@@ -61,14 +66,16 @@ The registry also defines several additional IDs that look like **future-facing 
 - COFFEE
 - NITROUS_OXIDE
 
-Those are real `DrugId` entries with effect data in Java, but the uploaded snapshot does not surface them as clearly as the currently craftable items above.
+These are real code-level entries, but the current snapshot does not expose them as clearly as the drugs listed above.
 
-## Item-facing behavior
+## How items enter the system
 
-Drug consumption enters the system through custom items and drinkable fluids. In practice:
+At runtime, drug items and drinkable fluids resolve one or more `DrugModel`s, pass them through the shared `DrugService`, and then separately increment addiction through the addiction manager.
 
-- powder, shards, drops, mushrooms, cigarettes, joints, and bottles all resolve to one or more `DrugModel`s
-- the `DrugService` applies the effects
-- addiction is updated separately through category-based tracking
+That split matters, because it lets the mod support:
 
-That split is why the mod can support both **present content** and **future content** cleanly.
+- powders, shards, drops, and mushrooms
+- rolled products like joints and cigarettes
+- fluid-based delivery through bottles
+- syringe-based systems
+- future content without rewriting the whole effect stack

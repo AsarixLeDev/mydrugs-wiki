@@ -1,8 +1,8 @@
 site_name: MyDrugs Mod Wiki
 site_description: Documentation for the MyDrugs Minecraft mod snapshot
-site_url: https://example.github.io/mydrugs-wiki/
-repo_name: yourname/mydrugs-wiki
-repo_url: https://github.com/yourname/mydrugs-wiki
+site_url: https://AsarixLeDev.github.io/mydrugs-wiki/
+repo_name: AsarixLeDev/mydrugs-wiki
+repo_url: https://github.com/AsarixLeDev/mydrugs-wiki
 theme:
   name: material
   features:

@@ -1,74 +1,79 @@
-# Technical architecture
+# Technical Architecture
 
-## Entrypoint
+This page summarizes how the snapshot is organized internally.
 
-`MyDrugs` is the main mod entrypoint. It registers:
+## Mod entrypoint
+
+`MyDrugs` registers the main systems:
 
 - blocks
 - items
 - block entities
-- recipe serializers and types
-- menus
+- menus and screens
+- recipe types and serializers
 - data components
-- fluids and fluid blocks/items
-- sound events
-- player attachments
-- shader registration
-- TerraBlender hooks
+- fluids
+- sounds
+- player addiction attachments
+- worldgen hooks
 
-It also initializes the main `DrugService` and populates the `DrugRegistry`.
+It also initializes the shared drug service and the in-code drug registry.
 
-## Recipe system
+## Content side vs player-state side
 
-The mod defines dedicated recipe types and serializers for:
+The codebase has two major halves:
 
-- grinding
-- stomp crafting
-- advanced furnace
-- mixing vat
-- distiller
-- drying
-- sieving
-- fluid filtering
-- evaporation tray
-- centrifuge
-- growth chamber
-- biochemical reactor
-- chemical reactor
-- gasifier
-- advanced mixing vat
+### Content and production
+- crops
+- items
+- containers
+- machines
+- fluids
+- gases
+- recipes
+- worldgen
 
-## Networking and sync
+### Player-state and presentation
+- drug registry
+- effect adapter
+- addiction manager
+- withdrawal logic
+- recovery systems
+- shaders
+- client sounds
+- HUD feedback
 
-The snapshot includes multiple payload-driven systems for gameplay sync, including examples such as:
+## Data components
 
-- in-game effect application
-- sieve shaking
-- headphones state
-- addiction severity / symptom sync
+The item layer uses modern data components for state such as:
 
-## Data-driven + code-driven balance
+- bottle contents
+- rolled contents
+- blood sample data
+- gas tank contents
+- filled state flags
 
-The mod uses a healthy split:
+That is a major reason the custom items feel robust instead of ad hoc.
 
-- **Code-driven** for systems, registries, machine logic, capabilities, and player-state simulation
-- **Data-driven** for recipes, worldgen JSON, language, loot, blockstates, models, sounds, and shaders
+## Machine framework
 
-## Command hook
+The larger machines share a lot of infrastructure:
 
-The command package registers a debug-style command:
+- synced item handlers
+- synced fluid tanks
+- gas handlers
+- transfer-slot locking
+- reusable menu and layout code
+- machine sync helpers
 
-- `/mydrugs shader <effect>`
+So even though the mod has many processors, they are not all implemented from scratch.
 
-That is useful for testing shader effects without going through the full gameplay pipeline.
+## Snapshot caveats
 
-## Known mismatches / cleanup notes from this snapshot
+A few details are visibly still in progress:
 
-A few details look like they should be normalized before public documentation goes live:
+- some advanced machines have code and recipes but no obtaining recipe
+- some names drift between code and assets
+- the upload is strong on implementation detail but not necessarily on release polish
 
-- `sulfur_oxide` in Java vs `reactive` in the language file
-- `lsd_bottle` assets exist in resources, but the provided Java snapshot does not obviously register a matching item
-- there is a `cocaine_shard.json` model file even though the main content name is `crack_shard`
-- one custom death message string for `blood_draw` looks like a private/internal placeholder rather than release text
-
-These are not blockers for the wiki, but they are good polish targets.
+That makes this a very documentable snapshot: the systems are real, but some public-facing cleanup still remains.

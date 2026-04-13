@@ -1,49 +1,29 @@
 # Block reference
 
-| Registry ID | Display name |
-| --- | --- |
-| activated_lysergic_acid | Activated Lysergic Acid |
-| activating_agent | Activating Agent |
-| acylating_agent | Acylating Agent |
-| advanced_furnace | Advanced Furnace |
-| advanced_mixing_vat | Advanced Mixing Vat |
-| amino_acid | Amino Acid |
-| ammoniac | Ammoniac |
-| biochemical_reactor | Biochemical Reactor |
-| blood | Blood |
-| chemical_reactor | Chemical Reactor |
-| coal_tar | Coal Tar |
-| crack | Crack |
-| diethylamine | Diethylamine |
-| distiller | Distiller |
-| dryer | Dryer |
-| ergotamine | Ergotamine |
-| evaporation_tray | Evaporation Tray |
-| fermented_mash | Fermented Mash |
-| filtered_extract | Filtered Extract |
-| fluid_filterer | Fluid Filterer |
-| gasifier | Gasifier |
-| grinding_bowl | Mortar |
-| hydrochloric_acid | Hydrochloric Acid |
-| lsd | Lsd |
-| lysergic_acid | Lysergic Acid |
-| magic_mushroom | Magic Mushroom |
-| magic_mushroom_block | Magic Mushroom Block |
-| magic_mushroom_stem | Magic Mushroom Stem |
-| malt_crop | Malt Crop |
-| mixing_vat | Mixing Vat |
-| murky_extract | Murky Extract |
-| psychedelic_grass | Psychedelic Grass Block |
-| psychedelic_mycelium | Psychedelic Mycelium |
-| raw_alcohol | Raw Alcohol |
-| rye | Rye |
-| rye_crop | Rye Crop |
-| sieve | Sieve |
-| starch_mash | Starch Mash |
-| stomp_crafter | Stomp Crafter |
-| sulfur_compound | Sulfur Compound |
-| sweet_mash | Sweet Mash |
-| tryptophan | Tryptophan Solution |
-| vodka | Vodka |
-| waste_biomass | Waste Biomass |
-| wild_yeast | Wild Yeast |
+| Block ID | Name | Notes |
+| --- | --- | --- |
+| advanced_furnace | Advanced Furnace | Crafting recipe present |
+| advanced_mixing_vat | Advanced Mixing Vat | No obtaining recipe in uploaded resources |
+| biochemical_reactor | Biochemical Reactor | No obtaining recipe in uploaded resources |
+| centrifuge | Centrifuge | No obtaining recipe in uploaded resources |
+| chemical_reactor | Chemical Reactor | No obtaining recipe in uploaded resources |
+| distiller | Distiller | No obtaining recipe in uploaded resources |
+| dryer | Dryer | Crafting recipe present |
+| evaporation_tray | Evaporation Tray | No obtaining recipe in uploaded resources |
+| fluid_filterer | Fluid Filterer | No obtaining recipe in uploaded resources |
+| gas_pump | Gas Pump | No obtaining recipe in uploaded resources |
+| gas_tank | Gas Tank | No obtaining recipe in uploaded resources |
+| gasifier | Gasifier | No obtaining recipe in uploaded resources |
+| grinding_bowl | Mortar | Crafting recipe present |
+| growth_chamber | Growth Chamber | No obtaining recipe in uploaded resources |
+| magic_mushroom | Magic Mushroom | World / crop content |
+| magic_mushroom_block | Magic Mushroom Block | World content |
+| magic_mushroom_stem | Magic Mushroom Stem | World content |
+| mixing_vat | Mixing Vat | Crafting recipe present |
+| psychedelic_grass | Psychedelic Grass Block | World content |
+| psychedelic_mycelium | Psychedelic Mycelium | World content |
+| recovery_anchor | Recovery Anchor | No obtaining recipe in uploaded resources |
+| rye | Rye | Crop / block content |
+| sieve | Sieve | Crafting recipe present |
+| stomp_crafter | Stomp Crafter | No obtaining recipe in uploaded resources |
+| therapist_desk | Therapist Desk | No obtaining recipe in uploaded resources |

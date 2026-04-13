@@ -1,6 +1,6 @@
 # MyDrugs Mod Wiki
 
-This repository is a static documentation site for the MyDrugs mod, built with **MkDocs** and hosted best on **GitHub Pages**.
+This repository contains a MkDocs-based wiki for the uploaded MyDrugs mod snapshot.
 
 ## Local preview
 
@@ -11,30 +11,26 @@ pip install -r requirements.txt
 mkdocs serve
 ```
 
-Then open the local address shown by MkDocs.
+Then open the local URL shown in the terminal.
 
-## Build the static site
+On Windows PowerShell, activate the environment with:
 
-```bash
-pip install -r requirements.txt
-mkdocs build
+```powershell
+.venv\Scripts\Activate.ps1
 ```
 
-The generated HTML site will be written to `site/`.
+## Publishing on GitHub Pages
 
-## Publish on GitHub Pages
+1. Push the repository to GitHub.
+2. Open **Settings → Pages**.
+3. Set **Build and deployment → Source** to **GitHub Actions**.
+4. Push to `main` or rerun the workflow in **Actions**.
 
-1. Create a GitHub repository and upload these files.
-2. In the repository settings, enable **GitHub Pages** with **GitHub Actions** as the source.
-3. Push to `main`.
-4. The included workflow will build and publish the wiki automatically.
+The site configuration already points at:
 
-## Before publishing
+- `site_url: https://AsarixLeDev.github.io/mydrugs-wiki/`
+- `repo_url: https://github.com/AsarixLeDev/mydrugs-wiki`
 
-Update these fields in `mkdocs.yml`:
+## Snapshot note
 
-- `site_url`
-- `repo_name`
-- `repo_url`
-
-That is enough to get a clean public wiki online.
+This wiki documents the uploaded snapshot, including systems that are implemented in code and assets but not yet fully obtainable in survival through the current recipe set.
